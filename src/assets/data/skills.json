@@ -106,5 +106,83 @@
         "lang": "NPM",
         "color": "#dc2626",
         "order": 18
+    },
+    {
+        "id": "aws",
+        "lang": "AWS",
+        "color": "#f0f0f0",
+        "order": 19
+    },
+    {
+        "id": "cloudformation",
+        "lang": "CloudFormation",
+        "color": "#ec4899",
+        "order": 20
+    },
+    {
+        "id": "eventbridge",
+        "lang": "EventBridge",
+        "color": "#ec4899",
+        "order": 21
+    },
+    {
+        "id": "stepfunctions",
+        "lang": "Step Functions",
+        "color": "#ec4899",
+        "order": 22
+    },
+    {
+        "id": "amplify",
+        "lang": "Amplify",
+        "color": "#dc2626",
+        "order": 23
+    },
+    {
+        "id": "appsync",
+        "lang": "AppSync",
+        "color": "#dc2626",
+        "order": 24
+    },
+    {
+        "id": "ecr",
+        "lang": "ECR",
+        "color": "#f97316",
+        "order": 25
+    },
+    {
+        "id": "ecs",
+        "lang": "ECS",
+        "color": "#f97316",
+        "order": 26
+    },
+    {
+        "id": "fargate",
+        "lang": "Fargate",
+        "color": "#f97316",
+        "order": 27
+    },
+    {
+        "id": "lambda",
+        "lang": "Lambda",
+        "color": "#f97316",
+        "order": 28
+    },
+    {
+        "id": "dynamo",
+        "lang": "DynamoDB",
+        "color": "#3b82f6",
+        "order": 29
+    },
+    {
+        "id": "s3",
+        "lang": "S3",
+        "color": "#22c55e",
+        "order": 30
+    },
+    {
+        "id": "cloudflare",
+        "lang": "Cloudflare",
+        "color": "#f97316",
+        "order": 31
     }
 ]
