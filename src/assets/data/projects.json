@@ -40,7 +40,7 @@
         "description": "Website que recopila los precios de diversas cervezas, destilados y vinos vendidos en Chile. Los datos de los productos se obtienen desde Drinks API. Los precios se actualizan diariamente desde las 9 am hasta las 5 pm hora de Chile.",
         "skills": ["ts", "tailwind", "node", "bun", "react", "next", "mongo", "graphql", "amplify", "appsync", "ecr", "ecs", "fargate", "lambda", "s3"],
         "repository": "https://github.com/Unnunoctio/rincon-del-curao",
-        "website": "https://rincondelcurao.com",
+        "website": "https://dev.rincondelcurao.cl",
         "githubId": 675419361,
         "icon": "/projects/rincon-del-curao/icon.svg",
         "logo": "/projects/rincon-del-curao/logo.svg",
