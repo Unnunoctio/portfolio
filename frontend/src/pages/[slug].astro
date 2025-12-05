@@ -1,0 +1,27 @@
+---
+import ProjectSection from "@/components/project/ProjectSection.astro";
+import Layout from "@/layouts/Layout.astro";
+
+import { allProjectsQuery } from "@/lib/queries";
+import { client } from "@/lib/sanity";
+import type { Project } from "@/types";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const projects = await client.fetch<Project[]>(allProjectsQuery);
+
+  return projects.map((project) => {
+    return {
+      params: { slug: project.slug },
+      props: { project },
+    };
+  });
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} | Proyectos`}>
+  <ProjectSection project={project} />
+</Layout>

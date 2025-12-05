@@ -1,0 +1,13 @@
+---
+import ProjectCard from "@/components/projects/ProjectCard.astro";
+import { allProjectsPreviewQuery } from "@/lib/queries";
+import { client } from "@/lib/sanity";
+import type { Project } from "@/types";
+
+const projects = await client.fetch<Project[]>(allProjectsPreviewQuery);
+projects.sort((a, b) => a.order - b.order)
+---
+
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
+  {projects.map((project) => <ProjectCard {...project} />)}
+</ul>

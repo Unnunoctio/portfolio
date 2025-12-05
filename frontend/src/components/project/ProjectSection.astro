@@ -1,0 +1,26 @@
+---
+import ProjectArchitectureBlock from "@/components/project/ProjectArchitectureBlock.astro";
+import ProjectLinksBlock from "@/components/project/ProjectLinksBlock.astro";
+import Logo from "@/components/ui/Logo.astro";
+import SectionContainer from "@/components/ui/SectionContainer.astro";
+import type { Project } from "@/types";
+import ProjectGithubSkeleton from "../skeletons/ProjectGithubSkeleton.astro";
+import ProjectGithubBlock from "./ProjectGithubBlock.astro";
+import ProjectInfoBlock from "./ProjectInfoBlock.astro";
+
+interface Props {
+  project: Project;
+}
+
+const { title, isReady, description, skills, repository, website, githubId, logo, architecture } = Astro.props.project;
+---
+
+<SectionContainer>
+    <Logo isHome={false} />
+    <ProjectInfoBlock title={title} isReady={isReady} description={description} skills={skills} logo={logo} />
+    <ProjectLinksBlock title={title} repository={repository} website={website} />
+    <ProjectGithubBlock server:defer githubId={githubId}>
+        <ProjectGithubSkeleton slot="fallback" />
+    </ProjectGithubBlock>
+    {architecture !== null && <ProjectArchitectureBlock title={title} architecture={architecture} />}
+</SectionContainer>

@@ -1,0 +1,16 @@
+---
+import GithubCalendar from "@/components/projects/GithubCalendar.astro";
+import ProjectsBlock from "@/components/projects/ProjectsBlock.astro";
+import GithubCalendarSkeleton from "@/components/skeletons/GithubCalendarSkeleton.astro";
+import InfoContainer from "@/components/ui/InfoContainer.astro";
+import SectionContainer from "@/components/ui/SectionContainer.astro";
+---
+
+<SectionContainer style="bg-bg-secondary">
+  <ProjectsBlock />
+  <InfoContainer>
+    <GithubCalendar server:defer username="Unnunoctio">
+      <GithubCalendarSkeleton slot="fallback" />
+    </GithubCalendar>
+  </InfoContainer>
+</SectionContainer>

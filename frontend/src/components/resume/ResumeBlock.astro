@@ -1,0 +1,29 @@
+---
+import InfoContainer from "@/components/ui/InfoContainer.astro";
+import ResumeList from "@/components/resume/ResumeList.astro";
+
+import { allExperienceQuery } from "@/lib/queries";
+import { client } from "@/lib/sanity";
+import type { Experience } from "@/types";
+
+const resumes = await client.fetch<Experience[]>(allExperienceQuery)
+---
+
+<InfoContainer>
+  <h2 class="text-4xl sm:text-5xl font-medium">Trabajo & Educación</h2>
+  
+  <section class="flex flex-row justify-between gap-x-8 mt-14">
+    <ResumeList 
+      experiences={resumes.filter(r => r.code === "work")} 
+      style="hidden md:block"
+    />
+    <ResumeList 
+      experiences={resumes.filter(r => r.code === "education")} 
+      style="hidden md:block"
+    />
+    <ResumeList 
+      experiences={resumes} 
+      style="block md:hidden"
+    />
+  </section>
+</InfoContainer>

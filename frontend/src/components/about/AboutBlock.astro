@@ -1,0 +1,57 @@
+---
+import TypeAndDelete from "@/components/about/TypeAndDelete.astro";
+import DownloadIcon from "@/components/icons/DownloadIcon.astro";
+import GithubIcon from "@/components/icons/GithubIcon.astro";
+import LinkedInIcon from "@/components/icons/LinkedInIcon.astro";
+import MailIcon from "@/components/icons/MailIcon.astro";
+import SkillBlock from "@/components/skills/SkillBlock.astro";
+import InfoContainer from "@/components/ui/InfoContainer.astro";
+import { Image } from "astro:assets";
+
+import { aboutQuery } from "@/lib/queries";
+import { client } from "@/lib/sanity";
+import type { About } from "@/types";
+
+const { title, subtitles, avatar, description, github, linkedin, cv, contactEmail } = await client.fetch<About>(aboutQuery);
+---
+
+<InfoContainer>
+  <section class="flex flex-col md:flex-row items-center gap-x-6 gap-y-4 md:gap-y-0">
+    <div class="relative">
+      <Image src="/about/easter-egg.webp" alt="Avatar" width="128" height="128" class="absolute z-10 rounded-full opacity-0" />
+      <Image src={avatar} alt="Avatar" width="128" height="128" class="rounded-full" />
+    </div>
+    <div class="flex flex-col gap-y-2">
+      <h1 class="text-5xl sm:text-6xl font-medium">{title}</h1>
+      <TypeAndDelete textArray={subtitles} />
+    </div>
+  </section>
+  
+  <section class="flex justify-center md:justify-start w-full mt-9">
+    <p class="max-w-[600px] text-lg text-pretty text-text-secondary">{description}</p>
+  </section>
+  
+  <section class="flex flex-wrap gap-4 mt-14">
+    <a href={github} aria-label="github" target="_blank" rel="noreferrer" class="group flex gap-2 pointer px-4 py-2.5 text-lg font-medium text-text-secondary bg-bg-tertiary rounded-2xl shadow-primary transition-colors hover:bg-bg-hover hover:text-text-hover">
+      <GithubIcon className="w-7 h-7 fill-text-secondary transition-colors group-hover:fill-text-hover" />
+      Github
+    </a>
+  
+    <a href={linkedin} aria-label="linkedin" target="_blank" rel="noreferrer" class="group flex gap-2 pointer px-4 py-2.5 text-lg font-medium text-text-secondary bg-bg-tertiary rounded-2xl shadow-primary transition-colors hover:bg-bg-hover hover:text-text-hover">
+      <LinkedInIcon className="w-7 h-7 fill-text-secondary transition-colors group-hover:fill-text-hover" />
+      LinkedIn
+    </a>
+  
+    <a href={cv} aria-label="curriculum" target="_blank" rel="noreferrer" class="group flex gap-2 pointer px-4 py-2.5 text-lg font-medium text-text-secondary bg-bg-tertiary rounded-2xl shadow-primary transition-colors hover:bg-bg-hover hover:text-text-hover">
+      <DownloadIcon className="w-7 h-7 fill-text-secondary transition-colors group-hover:fill-text-hover" />
+      Descargar CV
+    </a>
+  
+    <a href={`mailto:${contactEmail}`} aria-label="email" target="_blank" rel="noreferrer" class="group flex gap-2 pointer px-4 py-2.5 text-lg font-medium text-text-secondary bg-bg-tertiary rounded-2xl shadow-primary transition-colors hover:bg-bg-hover hover:text-text-hover">
+      <MailIcon className="w-7 h-7 stroke-text-secondary transition-colors group-hover:stroke-text-hover" />
+      Hablemos
+    </a>
+  </section>
+
+  <SkillBlock />
+</InfoContainer>
