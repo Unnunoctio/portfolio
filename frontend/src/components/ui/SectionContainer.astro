@@ -1,0 +1,11 @@
+---
+interface Props {
+  style?: string;
+}
+
+const { style = "" } = Astro.props;
+---
+
+<section class={`flex flex-col items-center gap-y-24 w-full pt-10 pb-14 ${style}`}>
+  <slot />
+</section>

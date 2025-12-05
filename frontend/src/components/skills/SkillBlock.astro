@@ -1,0 +1,23 @@
+---
+import { allTechnologiesQuery } from "@/lib/queries";
+import { client } from "@/lib/sanity";
+import type { Technology } from "@/types";
+import SkillBox from "./SkillBox.astro";
+
+const skills = await client.fetch<Technology[]>(allTechnologiesQuery);
+const categories = [
+    { code: 'language', name: 'Lenguajes' },
+    { code: 'database', name: 'Base de Datos'},
+    { code: 'frontend', name: 'Frontend'},
+    { code: 'backend', name: 'Backend'},
+    { code: 'tools', name: 'Herramientas'},
+    { code: 'other', name: 'Otros'},
+    { code: 'aws', name: 'Amazon Web Services'},
+]
+---
+
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-14 justify-items-center">
+    {categories.map((category) => (
+        <SkillBox title={category.name} skills={skills.filter((skill) => skill.category === category.code)} />
+    ))}
+</ul>

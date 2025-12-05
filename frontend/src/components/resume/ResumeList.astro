@@ -1,0 +1,30 @@
+---
+import ResumeItem from "@/components/resume/ResumeItem.astro";
+import type { Experience } from "@/types";
+
+interface Props {
+  experiences: Experience[];
+  style: string;
+}
+
+let { experiences, style } = Astro.props;
+
+experiences.sort((a, b) => {
+  if (a.endDate === null && b.endDate === null)
+    return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+  if (a.endDate === null) return -1;
+  if (b.endDate === null) return 1;
+
+  if (new Date(a.endDate).getFullYear() === new Date(b.endDate).getFullYear())
+    return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+  return new Date(b.endDate).getTime() - new Date(a.endDate).getTime();
+});
+---
+
+<ul class={style}>
+  {
+    experiences.map((experience, index) => (
+      <ResumeItem {...experience} isEnd={index === experiences.length - 1} />
+    ))
+  }
+</ul>

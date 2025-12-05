@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+    --font-geist: 'Geist', 'sans-serif';
+    --color-bg-primary:     #1c1c1c;
+    --color-bg-secondary:   #141212;
+    --color-bg-tertiary:    #272727;
+    --color-bg-hover:       #3e3e3eaa;
+    --color-bg-developing:  #4e119d;
+    --color-bg-developing-light: #8b5cf6;
+    --color-bg-skeleton:    #272727;
+
+    --color-text-primary:   #f0f0f0;
+    --color-text-secondary: #a5a5a5;
+    --color-text-tertiary:  #805ad5;
+    --color-text-hover:     #efefef;
+    --color-text-github-detail: #525252;
+
+    --color-border-primary: #353535;
+
+    --color-outline-card:   #c0c0c088;
+
+    --color-calendar-0:     #2D2D2Dab;
+    --color-calendar-1:     #433853;
+    --color-calendar-2:     #58447C;
+    --color-calendar-3:     #6C4Fa8;
+    --color-calendar-4:     #8B5CF6;
+    --color-calendar-border: rgba(255, 255, 255, 0.05);
+
+    --shadow-primary: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    --shadow-card: 0px 16px 60px 4px rgba(128, 90, 213, 0.3);
+
+    @keyframes card-shadow-pulse {
+        0%, 100% {
+            box-shadow: 0px 16px 60px 4px rgba(128, 90, 213, 0.3);
+            transform: scale(1);
+        }
+        50% {
+            box-shadow: 0px 16px 60px 20px rgba(128, 90, 213, 0.7);
+            transform: scale(1.03);
+        }
+    }
+    @keyframes card-pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.03);
+        }
+    }
+
+    --animate-card-shadow-pulse: card-shadow-pulse 300ms ease-in-out;
+    --animate-card-pulse: card-pulse 300ms ease-in-out;
+}
